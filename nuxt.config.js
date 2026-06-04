@@ -12,9 +12,9 @@ export default defineNuxtConfig({
 
     node: true,
 
-    // Externalize node:fs since Cloudflare Workers don't support real filesystem
+    // Externalize all node:* built-in modules (node:fs, node:events, etc.)
     rollupConfig: {
-      external: ['node:fs', 'fs']
+      external: (id) => id.startsWith('node:')
     },
 
     routeRules: {
