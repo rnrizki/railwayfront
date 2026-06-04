@@ -1,0 +1,573 @@
+@import "variables.styl"
+@import "base.styl"
+@import "grid.styl"
+@import "common.styl"
+@import "form.styl"
+@import "icons.styl"
+@import "shimmer.styl"
+@import "profile.styl"
+@import "featured.styl"
+@import "header.styl"
+@import "ajax-button.styl"
+@import "footer.styl"
+@import "featured-brands.styl"
+@import "toast-message.styl"
+@import "pagination.styl"
+@import "pop-over.styl"
+@import "stripe-payment.styl"
+@import "dropdown.styl"
+@import "search-popup.styl"
+@import "product-review.styl"
+@import "cart-product-tile.styl"
+@import "flash-product-list.styl"
+@import "flash-sale.styl"
+@import "cb-button.styl"
+@import "home-hero.styl"
+@import "glider-slider.styl"
+@import "product-tile.styl"
+@import "category-tile.styl"
+@import "product-detail.styl"
+@import "image-slider-popup.styl"
+@import "detail-images.styl"
+@import "detail-right.styl"
+@import "social-share.styl"
+@import "product-dynamic.styl"
+@import "quantity-nav.styl"
+@import "order.styl"
+@import "rating.styl"
+@import "vouchers.styl"
+@import "static.styl"
+@import "product-banner.styl"
+@import "address-popup.styl"
+@import "product-list.styl"
+@import "heading-tab.styl"
+@import "paypal-btn.styl"
+@import "input.styl"
+@import "shipping.styl"
+@import "spinner.styl"
+@import "search-product-tile.styl"
+@import "subscription.styl"
+@import "banner.styl"
+@import "contact.styl"
+@import "sitemap.styl"
+@import "breadcrumb.styl"
+@import "track-order.styl"
+@import "order-statues.styl"
+@import "store.styl"
+@import "store-tile.styl"
+@import "user-following.styl"
+@import "cart.styl"
+@import "checkout.styl"
+@import "tree-node.styl"
+@import "seller-registration.styl"
+@import "cookie-banner.styl"
+@import "whatsapp-btn.styl"
+@import "checkbox.styl"
+@import "radio.styl"
+@import "sticky-cart-btn.styl"
+
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+.img-zoom-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.zoom-image {
+  width: 100%;
+  height: 100%;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: scale(1.2);
+  transform-origin: top left;
+}
+
+.img-lens {
+  pointer-events: none;
+  position: absolute;
+  background: rgba(0, 0, 0, .2);
+}
+
+.zoom-fade-enter-active,
+.zoom-fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.zoom-fade-enter,
+.zoom-fade-leave-to {
+  opacity: 0;
+}
+
+.detail-image .thumb-slider li {
+  display flex
+  align-items center
+
+}
+
+.detail-image .thumb-slider .embla__container {
+  //justify-content center
+}
+
+
+.detail-image .thumb-slider li img {
+  cursor pointer
+}
+
+.detail-image .thumb-slider .embla__buttons > button.disabled {
+  display none
+}
+
+.detail-image .thumb-slider .embla__buttons > button {
+  left 0
+  bottom 5px
+  height 30px
+  border-radius 50px
+  width 30px
+  background rgba(0, 0, 0, .4)
+}
+
+.detail-image .thumb-slider .embla__buttons > button i {
+  opacity 1
+}
+
+.detail-image .thumb-slider .embla__buttons > .next-btn {
+  right 2px
+  left auto
+}
+
+
+.embla__container li {
+  flex: 0 0 16.66%;
+  min-width: 0;
+}
+
+.product-slider,
+.product-slider .embla,
+.product-slider .embla__viewport,
+.product-slider .embla__container,
+.main-slider .embla,
+.main-slider .embla__viewport,
+.main-slider .embla__container {
+  height: 100%;
+}
+
+.product-slider .embla__container li,
+.main-slider .embla__container li {
+  flex: 0 0 100%;
+}
+
+.category-wrapper .embla__container li {
+  flex: 0 0 11.11%;
+}
+
+.brands-wrapper .embla__container li {
+  flex: 0 0 33.33%;
+}
+
+.brands-wrapper.full-screen .embla__container li {
+  flex: 0 0 16.66%;
+}
+
+.flash-slider .embla__container li {
+  flex: 0 0 14.28%;
+}
+
+.rtl
+  direction rtl
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.no-scroll main {
+  position relative
+  z-index 2
+}
+
+main
+  padding-top calc(152px + 4%)
+
+.no-banner ~ main
+  padding-top 152px
+
+
+#cart-pop-over
+  top 50%
+  margin 0
+  transform translate(-50%, -50%)
+
+#dropdown-100
+  left 50%
+
+.html-render
+  p
+    margin 15px 0
+
+.thumb-list
+  .video-thumb
+    margin-top 5px
+    border 1px solid #ddd
+    border-radius border-radius
+    width 60px
+    min-width 60px
+    height 60px
+
+.error-list
+  font-size .9em
+
+  li
+    display block
+    color danger-foreground
+
+    &:first-child
+      color font-color
+      font-size 1.1em
+
+.touch-action {
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.h-200x
+  height 200px
+
+.h-24x
+  height 24px
+
+.w-70
+  width 70%
+
+.pb-70p
+  padding-bottom 70% !important
+
+.pb-100p
+  padding-bottom 100% !important
+
+.flash-sale
+.checkout
+.shipping
+.order-id
+div[class^="user-"]
+.cart
+.body-bg
+.index
+  transition background .2s
+  background home-bg
+
+.body-bg
+#__layout
+#__nuxt
+  min-height 100vh
+
+#__layout > .error
+  font-size 1rem
+
+body
+  max-width 1920px
+  margin 0 auto
+  position relative
+
+  &:after
+    content ''
+    position fixed
+    background #fff
+    opacity 0
+    top 0
+    bottom 0
+    height 100%
+    width 100%
+    z-index -1
+    transition all .05s
+
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.05s;
+}
+
+.main-slider .embla__container li:first-child img {
+  transition: none;
+}
+
+.page-title
+  color #470096
+
+.going-next
+  &:after
+    z-index 1
+
+.section
+  padding 50px 0 30px
+
+.home-section
+  margin-top 20px
+  margin-bottom 20px
+
+
+.home-section .embla-thumbs__container {
+  background: rgba(0, 0, 0, .4);
+  border-radius: 100px;
+  bottom: 15px;
+  display: flex;
+  height: 23px;
+  left: 50%;
+  padding: 4px;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.home-section .embla-thumbs__container > span{
+  border: 1px solid hsla(0, 0%, 100%, .5);
+  border-radius: 20px;
+  cursor: pointer;
+  height: 13px;
+  margin: 0 3px;
+  width: 13px;
+}
+.home-section .embla-thumbs__container > span.active{
+  background: hsla(0, 0%, 100%, .8);
+}
+
+
+.main-slider .shimmer-wrapper {
+  height 100%
+  width 100%
+  position absolute
+}
+
+.rtl .rating-stars
+  .rating
+    left auto
+    right 0
+
+.rating-stars
+  position relative
+  color rating-color
+  font-size 1.2em
+
+  .rating
+    overflow hidden
+    position absolute
+    top 0
+    left 0
+
+.drift-bounding-box
+  display none
+
+.detail-page
+  .drift-bounding-box
+    display block
+
+.area
+  background white
+  border-radius border-radius
+
+  .area-content
+    padding 0 15px 0
+
+  .title
+    font-weight 600
+    padding 10px 15px
+    border-bottom 1px solid #eee
+
+  .glide-nav
+    button
+      opacity .4
+
+      &.prev-btn
+        left 0
+        right auto
+
+      &.next-btn
+        right 0
+        left auto
+
+      &:hover
+        opacity .9
+
+      &:active
+        opacity 1 !important
+
+  &:hover
+    .glide-nav
+      button
+        opacity 1
+
+.img-wrapper
+  position relative
+  padding-bottom 100%
+
+  .shimmer
+  img
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    max-height 100%
+    max-width 100%
+    height auto
+    width auto
+
+  .shimmer
+    height 100%
+    width 100%
+
+.popup-banner-wrapper
+  position fixed
+  top 0
+  left 0
+  height 100%
+  width 100%
+  z-index 10
+  background rgba(0, 0, 0, .5)
+
+  .popup-banner
+    max-width 600px
+    position absolute
+    top 50%
+    left 50%
+    z-index 1
+    transform translate(-50%, -50%)
+
+//RESPONSIVE
+@media only screen and (max-width: 1200px)
+
+  .embla__container li {
+    flex: 0 0 20%;
+  }
+
+  .flash-slider .embla__container li,
+  .brands-wrapper .embla__container li,
+  .category-wrapper .embla__container li {
+    flex: 0 0 16.66%;
+  }
+
+  #cart-pop-over
+    min-width 80%
+
+@media only screen and (max-width: 992px)
+  .embla__container li {
+    flex: 0 0 25%;
+  }
+
+  .flash-slider .embla__container li,
+  .brands-wrapper.full-screen .embla__container li,
+  .brands-wrapper .embla__container li,
+  .category-wrapper .embla__container li {
+    flex: 0 0 20%;
+  }
+
+  .area
+    .title
+      padding 10px 15px
+
+@media only screen and (max-width: 768px)
+  .embla__container li {
+    flex: 0 0 50%;
+  }
+
+  .flash-slider .embla__container li,
+  .brands-wrapper.full-screen .embla__container li,
+  .brands-wrapper .embla__container li,
+  .category-wrapper .embla__container li {
+    flex: 0 0 33.33%;
+  }
+
+  #cart-pop-over
+    top unset
+
+  main
+    min-height 400px
+    overflow hidden
+    padding-top calc(230px + 4%)
+
+
+  .no-banner ~ main
+    padding-top 230px
+
+  .section
+    padding 30px 0 0
+
+  .home-section
+    margin-top 15px
+    margin-bottom 15px
+
+@media only screen and (max-width: 576px)
+  .embla__container li {
+    flex: 0 0 100%;
+  }
+
+  .flash-slider .embla__container li,
+  .brands-wrapper.full-screen .embla__container li,
+  .brands-wrapper .embla__container li,
+  .category-wrapper .embla__container li {
+    flex: 0 0 50%;
+  }
+
+  main
+    padding-top calc(230px + 6%)
+
+  .no-banner ~ main
+    padding-top 230px
+
+  .section
+    padding 15px 0 0
+
+  .area
+    .area-content
+      padding 0 10px 0
+
+    .title
+      padding 7.5px 10px
+
+    .glide-nav
+      button
+        opacity .9
+
+@media only screen and (max-width: 420px)
+  main
+    padding-top calc(195px + 6%)
+
+  .no-banner ~ main
+    padding-top 195px
+
+@media only screen and (max-width: 380px)
+  main
+    padding-top calc(175px + 6%)
+
+  .no-banner ~ main
+    padding-top 175px
+
+@media only screen and (max-width: 350px)
+
+  .flash-slider .embla__container li {
+    flex: 0 0 100%;
+  }
+
+  main
+    padding-top calc(200px + 6%)
+
+  .no-banner ~ main
+    padding-top 200px

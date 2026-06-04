@@ -1,0 +1,119 @@
+import {defineNuxtConfig} from 'nuxt/config'
+import configJson from './jsConfig.json'
+
+let apiBase = !process.env.API_BASE?.trim() ? '/' : process.env.API_BASE
+apiBase += configJson.api.url;
+
+export default defineNuxtConfig({
+  nitro: {
+    preset: 'node-server',
+    routeRules: {
+      '/robots.txt': { prerender: false },
+      '/sitemap.xml': { prerender: false },
+    },
+    handlers: [
+      {
+        route: '/robots.txt',
+        handler: '~/server/routes/robots.txt.js',
+      },
+      {
+        route: '/sitemap.xml',
+        handler: '~/server/routes/sitemap.xml.js',
+      }
+    ]
+  },
+  vite: {
+    server: {
+      hmr: {
+        overlay: false,
+      },
+      watch: {
+        usePolling: false,
+        ignored: ['**/node_modules/**', '**/.git/**'],
+      },
+      fs: {
+        strict: true,
+      },
+    },
+  },
+  compatibilityDate: '2024-11-01',
+  devtools: {enabled: false},
+
+  // Disable server-side rendering
+  ssr: process.env.SSR === 'true',
+
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@vite-pwa/nuxt'],
+
+  // Global page headers
+  app: {
+    head: {
+
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        {charset: 'utf-8'},
+        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+        {hid: 'description', name: 'description', content: ''},
+        {name: 'format-detection', content: 'telephone=no'}
+      ],
+      link: [
+        {rel: 'icon', type: 'image/x-icon', href: '/favicon.png'}
+      ]
+    }
+  },
+  css: [
+    '~/assets/styles/styles.styl',
+  ],
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE,
+      auth_token_key: 'ishop_frontend_auth',
+    }
+  },
+  components: true,
+  i18n: {
+    compilation: {
+      strictMessage: false,
+    },
+    locales: [
+      {code: 'en',},
+      {code: 'fr',},
+      {code: 'ar'},
+      {code: 'tr',},
+      {code: 'hi',},
+    ],
+    lazy: true,
+    vueI18n: '~/lang/config.js',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: false,
+    defaultLocale: null
+  },
+
+  pwa: {
+    manifest: {
+      name: process.env.APP_NAME,
+      short_name: process.env.APP_NAME,
+      theme_color:'#000000',
+      description: "An ecommerce app",
+      icons: [
+        {
+          src: 'pwa-icon.png',
+          sizes: "150x150",
+          type: "image/png"
+        },
+      ]
+    },
+    workbox: {
+      navigateFallback: "/",
+    },
+    devOptions: {
+      enabled: false,
+      type: "module"
+    }
+  },
+  // Build Configuration
+  build: {
+    transpile: []
+  },
+})
