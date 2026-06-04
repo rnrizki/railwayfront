@@ -6,6 +6,8 @@ compatibility_flags = ["nodejs_compat"]
 API_BASE = "/"
 APP_NAME = "RailwayFront"
 
-# Cloudflare Pages + Assets (recommended for Nitro cloudflare-pages preset)
+# Required for wrangler pages deploy when using wrangler.toml
+pages_build_output_dir = "dist"
+
 [assets]
 directory = "dist"
