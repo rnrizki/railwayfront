@@ -4,14 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "build:worker": "nuxt build --preset cloudflare",
+    "build:cloudflare": "nuxt build --preset cloudflare",
     "build:pages": "nuxt build --preset cloudflare-pages",
     "dev": "nuxt dev --dotenv .env.dev",
     "generate": "nuxt generate --dotenv .env.client",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "wrangler pages deploy dist --project-name railwayfront",
-    "deploy:pages": "wrangler pages deploy dist --project-name railwayfront"
+    "deploy": "wrangler pages deploy .output/public --project-name railwayfront",
+    "deploy:cloudflare": "wrangler pages deploy .output/public --project-name railwayfront"
   },
   "dependencies": {
     "@glidejs/glide": "^3.7.1",
