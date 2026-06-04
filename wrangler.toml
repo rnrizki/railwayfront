@@ -1,6 +1,6 @@
 name = "railwayfront"
 compatibility_date = "2025-06-05"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = ["nodejs_compat", "nodejs_compat_v2"]
 
 [vars]
 API_BASE = "/"
