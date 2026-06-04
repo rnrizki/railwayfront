@@ -7,11 +7,7 @@ apiBase += configJson.api.url
 export default defineNuxtConfig({
   nitro: {
     // === Optimized for Cloudflare (Pages + Workers) ===
-    // 'cloudflare-pages' is currently the best preset for Nuxt 3 SSR + static assets
     preset: 'cloudflare-pages',
-
-    // Alternative for pure single Worker deployment:
-    // preset: 'cloudflare',
 
     compatibilityFlags: ['nodejs_compat'],
 
@@ -20,17 +16,18 @@ export default defineNuxtConfig({
       '/': { prerender: true },
       '/brands': { prerender: true },
       '/categories': { prerender: true },
-      '/flash-sale': { prerender: true },
+      // Temporarily disabled full prerender for flash-sale due to build errors
+      // '/flash-sale': { prerender: true },
 
-      // === SWR (Stale-While-Revalidate) - great for e-commerce listings ===
-      '/shop/**': { swr: 60 * 5 },           // 5 minutes
+      // === SWR (Stale-While-Revalidate) ===
+      '/shop/**': { swr: 60 * 5 },
       '/all': { swr: 60 * 5 },
       '/search': { swr: 60 * 2 },
+      '/flash-sale': { swr: true },
 
-      // === Product pages - cache with revalidation ===
-      '/**': { swr: true }, // fallback for other pages
+      '/**': { swr: true },
 
-      // === Always SSR (no cache) - auth, cart, user area ===
+      // === Always SSR (no cache) ===
       '/login': { ssr: true },
       '/register': { ssr: true },
       '/forgot-password': { ssr: true },
@@ -41,14 +38,13 @@ export default defineNuxtConfig({
       '/seller/**': { ssr: true },
       '/payfast/**': { ssr: true },
 
-      // === Special routes ===
       '/robots.txt': { prerender: false },
       '/sitemap.xml': { prerender: false },
     },
 
     prerender: {
-      routes: ['/', '/brands', '/categories', '/flash-sale'],
-      // crawlLinks: true, // enable only if you want automatic crawling (can be slow)
+      routes: ['/', '/brands', '/categories'],
+      failOnError: false,   // Prevents build from failing if some pages error during prerender
     },
 
     handlers: [
@@ -63,14 +59,11 @@ export default defineNuxtConfig({
     ]
   },
 
-  // Vite optimizations for smaller bundles (important on Workers)
   vite: {
     build: {
       rollupOptions: {
         output: {
           manualChunks: {
-            // Split heavy libs if needed
-            // 'vendor': ['vue', 'pinia']
           }
         }
       }
@@ -92,7 +85,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
 
-  // === Enable SSR by default for Cloudflare Workers ===
   ssr: true,
 
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@vite-pwa/nuxt'],
