@@ -12,7 +12,12 @@ export default defineNuxtConfig({
 
     node: true,
 
-    // Externalize all node:* built-in modules (node:fs, node:events, etc.)
+    // Prevent Nitro from tracing and bundling node built-ins
+    externals: {
+      trace: false
+    },
+
+    // Externalize all node:* modules
     rollupConfig: {
       external: (id) => id.startsWith('node:')
     },
