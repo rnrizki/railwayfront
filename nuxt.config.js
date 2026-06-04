@@ -6,18 +6,17 @@ apiBase += configJson.api.url
 
 export default defineNuxtConfig({
   nitro: {
-    preset: 'cloudflare-pages',
+    // Using 'cloudflare' preset instead of 'cloudflare-pages' to avoid internal node:fs issues
+    preset: 'cloudflare',
 
     compatibilityFlags: ['nodejs_compat_v2'],
 
     node: true,
 
-    // Prevent Nitro from tracing and bundling node built-ins
     externals: {
       trace: false
     },
 
-    // Externalize all node:* modules
     rollupConfig: {
       external: (id) => id.startsWith('node:')
     },
