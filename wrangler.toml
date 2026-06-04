@@ -1,0 +1,17 @@
+name = "railwayfront"
+compatibility_date = "2025-06-05"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+API_BASE = "/"
+APP_NAME = "RailwayFront"
+
+# For pure 'cloudflare' preset only:
+# main = ".output/server/index.mjs"
+
+# Static assets (used by cloudflare-pages preset)
+[site]
+bucket = ".output/public"
+
+[build]
+command = "npm run build:pages"
