@@ -8,10 +8,14 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
 
-    compatibilityFlags: ['nodejs_compat', 'nodejs_compat_v2'],
+    compatibilityFlags: ['nodejs_compat_v2'],
 
-    // Additional Node.js compatibility settings
     node: true,
+
+    // Externalize node:fs since Cloudflare Workers don't support real filesystem
+    rollupConfig: {
+      external: ['node:fs', 'fs']
+    },
 
     routeRules: {
       '/': { prerender: true },
