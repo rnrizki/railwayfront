@@ -9,17 +9,13 @@ export default defineNuxtConfig({
     // === Optimized for Cloudflare (Pages + Workers) ===
     preset: 'cloudflare-pages',
 
-    compatibilityFlags: ['nodejs_compat'],
+    compatibilityFlags: ['nodejs_compat', 'nodejs_compat_v2'],
 
     routeRules: {
-      // === Static / Prerendered pages (best performance) ===
       '/': { prerender: true },
       '/brands': { prerender: true },
       '/categories': { prerender: true },
-      // Temporarily disabled full prerender for flash-sale due to build errors
-      // '/flash-sale': { prerender: true },
 
-      // === SWR (Stale-While-Revalidate) ===
       '/shop/**': { swr: 60 * 5 },
       '/all': { swr: 60 * 5 },
       '/search': { swr: 60 * 2 },
@@ -27,7 +23,6 @@ export default defineNuxtConfig({
 
       '/**': { swr: true },
 
-      // === Always SSR (no cache) ===
       '/login': { ssr: true },
       '/register': { ssr: true },
       '/forgot-password': { ssr: true },
@@ -44,7 +39,7 @@ export default defineNuxtConfig({
 
     prerender: {
       routes: ['/', '/brands', '/categories'],
-      failOnError: false,   // Prevents build from failing if some pages error during prerender
+      failOnError: false,
     },
 
     handlers: [
