@@ -10,8 +10,8 @@
     "generate": "nuxt generate --dotenv .env.client",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "wrangler pages deploy dist",
-    "deploy:pages": "wrangler pages deploy dist"
+    "deploy": "wrangler pages deploy dist --project-name railwayfront",
+    "deploy:pages": "wrangler pages deploy dist --project-name railwayfront"
   },
   "dependencies": {
     "@glidejs/glide": "^3.7.1",
