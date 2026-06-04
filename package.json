@@ -10,24 +10,24 @@
     "generate": "nuxt generate --dotenv .env.client",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "wrangler deploy",
-    "deploy:pages": "wrangler pages deploy .output/public"
+    "deploy": "wrangler pages deploy dist",
+    "deploy:pages": "wrangler pages deploy dist"
   },
   "dependencies": {
     "@glidejs/glide": "^3.7.1",
     "@nuxtjs/i18n": "^9.1.5",
     "@pinia/nuxt": "^0.11.0",
-    "@vite-pwa/nuxt": "^1.0.1",
+    "@vite-pwa/nuxt": "^1.1.1",
     "debounce": "^2.2.0",
     "embla-carousel-vue": "^8.5.2",
     "moment-timezone": "^0.5.47",
-    "nuxt": "^3.17.4",
-    "pinia": "^3.0.2",
+    "nuxt": "^3.21.7",
+    "pinia": "^3.0.4",
     "vue": "latest",
-    "vue-cryptojs": "^2.4.7",
-    "vue-dompurify-html": "^5.2.0",
+    "vue-cryptojs": "^2.4.8",
+    "vue-dompurify-html": "^5.3.0",
     "vue-router": "latest",
-    "vue3-social-sharing": "^1.4.1"
+    "vue3-social-sharing": "^1.5.0"
   },
   "devDependencies": {
     "stylus": "^0.64.0",
