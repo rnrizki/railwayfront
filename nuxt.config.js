@@ -6,10 +6,12 @@ apiBase += configJson.api.url
 
 export default defineNuxtConfig({
   nitro: {
-    // === Optimized for Cloudflare (Pages + Workers) ===
     preset: 'cloudflare-pages',
 
     compatibilityFlags: ['nodejs_compat', 'nodejs_compat_v2'],
+
+    // Additional Node.js compatibility settings
+    node: true,
 
     routeRules: {
       '/': { prerender: true },
