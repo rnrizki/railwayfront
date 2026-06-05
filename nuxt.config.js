@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import configJson from './jsConfig.json'
 
-let apiBase = https://backend.majalahpdf.my.id/
+let apiBase = !process.env.API_BASE?.trim() ? '/' : process.env.API_BASE
 apiBase += configJson.api.url
 
 export default defineNuxtConfig({
