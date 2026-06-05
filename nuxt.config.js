@@ -6,7 +6,7 @@ apiBase += configJson.api.url
 
 export default defineNuxtConfig({
   nitro: {
-    // Using 'cloudflare' preset instead of 'cloudflare-pages' to avoid internal node:fs issues
+    // Using 'cloudflare' preset
     preset: 'cloudflare',
 
     compatibilityFlags: ['nodejs_compat_v2'],
@@ -22,17 +22,23 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
+      // === Static pages (best performance) ===
       '/': { prerender: true },
       '/brands': { prerender: true },
       '/categories': { prerender: true },
+      '/flash-sale': { prerender: true },
 
-      '/shop/**': { swr: 60 * 5 },
-      '/all': { swr: 60 * 5 },
-      '/search': { swr: 60 * 2 },
-      '/flash-sale': { swr: true },
+      // === Dynamic pages - Short cache (recommended) ===
+      '/product/**': { swr: 30 },        // Only 30 seconds
+      '/category/**': { swr: 30 },
+      '/shop/**': { swr: 30 },
+      '/all': { swr: 30 },
+      '/search': { swr: 30 },
 
-      '/**': { swr: true },
+      // === Fallback for other pages ===
+      '/**': { swr: 30 },
 
+      // === Always SSR (no cache) - Important pages ===
       '/login': { ssr: true },
       '/register': { ssr: true },
       '/forgot-password': { ssr: true },
@@ -43,12 +49,13 @@ export default defineNuxtConfig({
       '/seller/**': { ssr: true },
       '/payfast/**': { ssr: true },
 
+      // === Special files ===
       '/robots.txt': { prerender: false },
       '/sitemap.xml': { prerender: false },
     },
 
     prerender: {
-      routes: ['/', '/brands', '/categories'],
+      routes: ['/', '/brands', '/categories', '/flash-sale'],
       failOnError: false,
     },
 
@@ -64,12 +71,16 @@ export default defineNuxtConfig({
     ]
   },
 
+  // Helps reduce hydration and caching issues
+  experimental: {
+    payloadExtraction: false
+  },
+
   vite: {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-          }
+          manualChunks: {}
         }
       }
     },
