@@ -131,19 +131,10 @@
         if (hasHomeData.value) {
             return null;
         }
-       const {data, pending, error} = await useAsyncData('home', async () => {
-    if (hasHomeData.value) {
-        return null;
-    }
-    const response = await unAuthGet({api: 'home', params: '', lang: langCode.value});
-    setHomeData(response);
-    return response.data;
-}, {
-    getCachedData: (key) => null // ← This forces fresh data (no cache)
-}                     
-                                                     
-                                                     
-                                                     );
+        const response = await unAuthGet({api: 'home', params: '', lang: langCode.value});
+        setHomeData(response);
+        return response.data;
+    });
 
     const {customScripts, site_setting} = storeToRefs(commonStore);
     const {pageMeta, preloadScript} = useMetaData();
