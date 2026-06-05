@@ -134,7 +134,13 @@
         const response = await unAuthGet({api: 'home', params: '', lang: langCode.value});
         setHomeData(response);
         return response.data;
-    });
+    }
+        {
+        getCachedData: (key) => null          // ← This forces fresh data (no cache)
+    }                                             
+                                                     
+                                                     
+                                                     );
 
     const {customScripts, site_setting} = storeToRefs(commonStore);
     const {pageMeta, preloadScript} = useMetaData();
