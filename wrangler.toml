@@ -1,12 +1,12 @@
 name = "railwayfront"
 compatibility_date = "2025-06-05"
 compatibility_flags = ["nodejs_compat"]
+node_compat = true
 
 [vars]
 API_BASE = "/"
 APP_NAME = "RailwayFront"
 
-# Output directory when using Nitro preset
 pages_build_output_dir = "dist"
 
 [assets]
