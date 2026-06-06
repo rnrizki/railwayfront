@@ -6,19 +6,12 @@
     "build": "nuxt build",
     "build:cloudflare": "nuxt build --preset cloudflare",
     "build:pages": "nuxt build --preset cloudflare-pages",
-    "cache:clear": "nuxi cleanup",
-    "cleanup": "nuxi cleanup",
-    "cf:login": "wrangler login",
-    "cf:whoami": "wrangler whoami",
-    "cf:secret": "wrangler pages secret put REFRESH_SECRET --project-name railwayfront",
-    "cf:deploy": "wrangler pages deploy .output/public --project-name railwayfront",
     "dev": "nuxt dev --dotenv .env.dev",
     "generate": "nuxt generate --dotenv .env.client",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "deploy": "wrangler pages deploy .output/public --project-name railwayfront",
-    "deploy:cloudflare": "wrangler pages deploy .output/public --project-name railwayfront",
-    "deploy:clean": "npm run cache:clear && npm run build:pages && npm run deploy"
+    "deploy:cloudflare": "wrangler pages deploy .output/public --project-name railwayfront"
   },
   "dependencies": {
     "@glidejs/glide": "^3.7.1",
