@@ -6,20 +6,19 @@ apiBase += configJson.api.url
 
 export default defineNuxtConfig({
   nitro: {
-    preset: 'cloudflare-pages',
+    // Using 'cloudflare' preset instead of 'cloudflare-pages' to avoid internal node:fs issues
+    preset: 'cloudflare',
 
-    compatibilityFlags: ['nodejs_compat'],
+    compatibilityFlags: ['nodejs_compat_v2'],
 
     node: true,
-    shims: true,
 
     externals: {
-      trace: false,
-      external: ['node:fs', 'fs', 'node:path', 'path', 'node:crypto', 'crypto']
+      trace: false
     },
 
     rollupConfig: {
-      external: ['node:fs', 'fs', 'node:path', 'path']
+      external: (id) => id.startsWith('node:')
     },
 
     routeRules: {
@@ -114,10 +113,9 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/styles/styles.styl',
-  },
+  ],
 
   runtimeConfig: {
-    refreshSecret: process.env.REFRESH_SECRET,
     public: {
       apiBase: process.env.API_BASE,
       auth_token_key: 'ishop_frontend_auth',
