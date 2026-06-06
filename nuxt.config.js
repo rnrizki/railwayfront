@@ -6,10 +6,9 @@ apiBase += configJson.api.url
 
 export default defineNuxtConfig({
   nitro: {
-    // Using 'cloudflare' preset instead of 'cloudflare-pages' to avoid internal node:fs issues
-    preset: 'cloudflare',
+    preset: 'cloudflare-pages',
 
-    compatibilityFlags: ['nodejs_compat_v2'],
+    compatibilityFlags: ['nodejs_compat'],
 
     node: true,
 
@@ -60,7 +59,7 @@ export default defineNuxtConfig({
       {
         route: '/sitemap.xml',
         handler: '~/server/routes/sitemap.xml.js',
-    }
+      }
     ]
   },
 
@@ -116,7 +115,7 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    refreshSecret: process.env.REFRESH_SECRET,   // <-- Added for cache refresh endpoint
+    refreshSecret: process.env.REFRESH_SECRET,
     public: {
       apiBase: process.env.API_BASE,
       auth_token_key: 'ishop_frontend_auth',
