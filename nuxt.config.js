@@ -13,11 +13,12 @@ export default defineNuxtConfig({
     node: true,
 
     externals: {
-      trace: false
+      trace: false,
+      external: ['node:fs', 'fs', 'node:path', 'path', 'node:crypto', 'crypto']
     },
 
     rollupConfig: {
-      external: (id) => id.startsWith('node:')
+      external: ['node:fs', 'fs', 'node:path', 'path']
     },
 
     routeRules: {
@@ -112,7 +113,7 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/styles/styles.styl',
-  ],
+  },
 
   runtimeConfig: {
     refreshSecret: process.env.REFRESH_SECRET,
