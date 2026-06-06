@@ -6,6 +6,8 @@
     "build": "nuxt build",
     "build:cloudflare": "nuxt build --preset cloudflare",
     "build:pages": "nuxt build --preset cloudflare-pages",
+    "cache:clear": "nuxi cleanup",
+    "cleanup": "nuxi cleanup",
     "dev": "nuxt dev --dotenv .env.dev",
     "generate": "nuxt generate --dotenv .env.client",
     "preview": "nuxt preview",
