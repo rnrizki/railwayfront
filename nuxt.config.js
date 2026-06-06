@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     compatibilityFlags: ['nodejs_compat'],
 
     node: true,
+    shims: true,
 
     externals: {
       trace: false,
