@@ -1,13 +1,13 @@
 name = "railwayfront"
 compatibility_date = "2025-06-05"
-compatibility_flags = ["nodejs_compat_v2"]
+compatibility_flags = ["nodejs_compat"]
 
 [vars]
 API_BASE = "/"
 APP_NAME = "RailwayFront"
 
-# Output directory when using Nitro preset: 'cloudflare'
-pages_build_output_dir = ".output/public"
+# Output directory when using Nitro preset
+pages_build_output_dir = "dist"
 
 [assets]
-directory = ".output/public"
+directory = "dist"
