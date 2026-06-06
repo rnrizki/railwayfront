@@ -119,6 +119,25 @@ Key variables from original:
 - `SSR` ("true" or "false")
 - `APP_NAME`
 
+## Clearing Nitro Cache (New!)
+
+To **manually clear Nitro cache** from CLI (very useful when you have stale data, changed `routeRules`, or after updating components):
+
+```bash
+npm run cache:clear
+# or
+npm run cleanup
+# or directly
+npx nuxi cleanup
+```
+
+This command removes the `.nuxt` and `.output` folders, clearing all Nitro build cache and generated files.
+
+**When to use it:**
+- After modifying `routeRules` in `nuxt.config.js`
+- When seeing outdated cached pages during development
+- Before a fresh build/deploy
+
 ## SSR Best Practices & Tips for Cloudflare Workers
 
 ### 1. Hybrid Rendering Strategy (Already Configured)
