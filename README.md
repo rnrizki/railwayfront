@@ -89,26 +89,43 @@ Or manually:
 npx wrangler deploy
 ```
 
-## Alternative: Deploy to Cloudflare Pages (Recommended for most apps)
+## Cloudflare CLI Commands (New Convenience Scripts)
 
-If you prefer Cloudflare Pages (better static asset handling + caching):
+We added easy npm scripts so you don't have to remember long commands:
 
-1. Change in `nuxt.config.js`:
-   ```js
-   preset: 'cloudflare-pages'
-   ```
+| Command              | What it does                                      |
+|----------------------|---------------------------------------------------|
+| `npm run cf:login`   | Login to Cloudflare                               |
+| `npm run cf:whoami`  | Check current logged-in account                   |
+| `npm run cf:secret`  | Set `REFRESH_SECRET` (for cache refresh endpoint) |
+| `npm run cf:deploy`  | Deploy to Cloudflare Pages                        |
+| `npm run deploy:clean` | Clear cache + build + deploy (recommended)     |
 
-2. Build:
-   ```bash
-   npm run build:pages
-   ```
+**Example usage:**
 
-3. Deploy:
-   ```bash
-   npm run deploy:pages
-   ```
+```bash
+npm run cf:login
+npm run cf:secret          # Set your refresh secret
+npm run deploy:clean         # Best way to deploy
+```
 
-Or connect your GitHub repo directly in the Cloudflare dashboard → Pages → Create new project.
+## Clearing Nitro Cache + Getting Fresh Backend Data
+
+### Method 1: Using npm script (Recommended)
+
+```bash
+npm run cache:clear
+```
+
+### Method 2: Using the Admin Endpoint (No rebuild needed)
+
+After setting the secret, you can force fresh data from backend:
+
+```bash
+curl -X POST https://your-domain.com/api/admin/refresh-cache \
+  -H "Content-Type: application/json" \
+  -d '{"secret": "YOUR_SECRET_HERE"}'
+```
 
 ## Environment Variables
 
@@ -118,6 +135,7 @@ Key variables from original:
 - `API_BASE` (usually "/")
 - `SSR` ("true" or "false")
 - `APP_NAME`
+- `REFRESH_SECRET` (for admin cache refresh endpoint)
 
 ## Clearing Nitro Cache (New!)
 
