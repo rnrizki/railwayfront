@@ -60,7 +60,7 @@ export default defineNuxtConfig({
       {
         route: '/sitemap.xml',
         handler: '~/server/routes/sitemap.xml.js',
-      }
+    }
     ]
   },
 
@@ -116,6 +116,7 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
+    refreshSecret: process.env.REFRESH_SECRET,   // <-- Added for cache refresh endpoint
     public: {
       apiBase: process.env.API_BASE,
       auth_token_key: 'ishop_frontend_auth',
